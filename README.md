@@ -1,6 +1,6 @@
 # MP3 set title #
 
-MP3 files loading into the players (e.g. car audio players), only show the title in their metadata, instead of their file names. This can create confusion when we compile a library of these mp3 files in a hard drive and connect it to the (car) player.
+MP3 files loading into music players (e.g. car audio players) only show the title from their metadata, instead of their file names. This can create confusion when we compile a library of these mp3 files in a hard drive and connect it to the (car) player.
 
 This is a simple program to set titles of mp3 files using their filenames. We assume the files are named as `{album}-{song title}.mp3`, and the final mp3 files will have:
 - title: `{album}-{song title}`

@@ -4,7 +4,7 @@ use id3::{Tag, TagLike};
 use log::info;
 use std::path::{Path, PathBuf};
 
-/// Simple program to greet a person
+/// Set title of mp3 files in a given directory as their file names
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {

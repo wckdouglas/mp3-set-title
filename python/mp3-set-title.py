@@ -22,9 +22,9 @@ def mod_title(mp3_file: Path):
 @click.option("-m", "--mp3-directory", required=True, help="Directory containing all mp3 files")
 def main(mp3_directory: str):
     """
-    Set title of mp3 files in a given directory as their file names
+    Set title of mp3 files in a given directory using their file names
 
-    assuming the file is named as {album}-{song}.mp3
+    This assumes the files are named as {album}-{title}.mp3
 
     :param str mp3_directory: Directory containing all mp3 file
     :raises ValueError: if the given directory does not exist

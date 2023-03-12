@@ -4,8 +4,8 @@ use id3::{Tag, TagLike};
 use log::info;
 use std::path::{Path, PathBuf};
 
-/// Set title of mp3 files in a given directory as their file names
-/// assuming the file is named as {album}-{song}.mp3
+/// Set title of mp3 files in a given directory using their file names,
+/// this assumes the file is named as {album}-{song_title}.mp3
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {

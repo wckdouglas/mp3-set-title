@@ -2,7 +2,7 @@
 
 This is a simple program to set title of a mp3 file as it's filename
 
-```python
+```bash
 $ poetry run python mp3_set_title.py --help
 Usage: mp3_set_title.py [OPTIONS]
 

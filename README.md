@@ -10,10 +10,10 @@ The program is written in Rust, and can be installed with `cargo install` (get [
 
 ```
 $ cargo install --path .
-$ mp3_set_title --help
+$ mp3-set-title --help
 Set title of mp3 files in a given directory as their file names
 
-Usage: mp3_set_title --mp3-directory <MP3_DIRECTORY>
+Usage: mp3-set-title --mp3-directory <MP3_DIRECTORY>
 
 Options:
   -m, --mp3-directory <MP3_DIRECTORY>  Directory containing all mp3 files
@@ -26,8 +26,15 @@ Options:
 The prototype was written in python and dependencies are managed by [poetry](https://python-poetry.org/).
 
 ```
-$ poetry run python python/mp3_set_title.py --help
-Usage: mp3_set_title.py [OPTIONS]
+$ poetry run python python/mp3-set-title.py --help
+Usage: mp3-set-title.py [OPTIONS]
+
+  Set title of mp3 files in a given directory as their file names
+
+  assuming the file is named as {album}-{song}.mp3
+
+  :param str mp3_directory: Directory containing all mp3 file :raises
+  ValueError: if the given directory does not exist
 
 Options:
   -m, --mp3-directory TEXT  Directory containing all mp3 files  [required]

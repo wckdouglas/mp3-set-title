@@ -1,5 +1,5 @@
 [package]
-name = "mp3"
+name = "mp3_set_title"
 version = "0.1.0"
 edition = "2021"
 

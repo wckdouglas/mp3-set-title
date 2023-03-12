@@ -19,7 +19,7 @@ def mod_title(mp3_file: Path):
 
 
 @click.command()
-@click.option("-d", "--mp3-directory", required=True, help="Directory containing all mp3 files")
+@click.option("-m", "--mp3-directory", required=True, help="Directory containing all mp3 files")
 def main(mp3_directory: str):
     mp3_path = Path(mp3_directory)
     if not mp3_path.is_dir():

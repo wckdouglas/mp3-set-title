@@ -31,7 +31,8 @@ fn check_folder_exists(file_path: &str) -> Result<String, String> {
 ///
 /// # Arguments
 /// - mp3_file: the file path to a mp3 file
-/// -
+/// - title: the title of to be set for the song
+/// - album: the album to be set for the song
 fn mutate_mp3_file_metadata(mp3_file: &Path, title: &str, album: &str) -> Result<(), String> {
     let mp3_file_string = check_folder_exists(mp3_file.to_str().ok_or("mp3 file is not a str")?)?;
     info!("Mutating file: {}", mp3_file_string);
@@ -47,6 +48,11 @@ fn mutate_mp3_file_metadata(mp3_file: &Path, title: &str, album: &str) -> Result
     Ok(())
 }
 
+/// For a given directory, find all the mp3 files and set the title as it's filename,
+/// assuming the file is named as {album}-{song}.mp3
+///
+/// # Arguments
+/// - mp3_directory: the file path to the directory containing all the mp3 files
 fn run(mp3_directory: String) -> Result<(), String> {
     let file_pattern: String = format!("{}/*.mp3", mp3_directory);
     let mp3_file_list = glob(&file_pattern).map_err(|e| e.to_string())?;

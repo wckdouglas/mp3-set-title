@@ -20,7 +20,7 @@ Options:
 ## python ##
 
 ```bash
-$ poetry run python mp3_set_title.py --help
+$ poetry run python python/mp3_set_title.py --help
 Usage: mp3_set_title.py [OPTIONS]
 
 Options:

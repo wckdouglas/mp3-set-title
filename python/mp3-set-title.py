@@ -29,7 +29,7 @@ def main(mp3_directory: str):
     :param str mp3_directory: Directory containing all mp3 file
     :raises ValueError: if the given directory does not exist
     """
-    mp3_path = Path(mp3_directory)
+    mp3_path = Path(mp3_directory).resolve()
     if not mp3_path.is_dir():
         raise ValueError(f"{mp3_path} is not a valid directory")
 

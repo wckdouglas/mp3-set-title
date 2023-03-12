@@ -3,6 +3,7 @@ use glob::glob;
 use id3::{Tag, TagLike};
 use log::info;
 use std::path::{Path, PathBuf};
+use std::fs::canonicalize;
 
 /// Set title of mp3 files in a given directory using their file names,
 /// this assumes the file is named as {album}-{song_title}.mp3
@@ -36,14 +37,13 @@ fn check_folder_exists(file_path: &str) -> Result<String, String> {
 /// - album: the album to be set for the song
 fn mutate_mp3_file_metadata(mp3_file: &Path, title: &str, album: &str) -> Result<(), String> {
     let mp3_file_string = check_folder_exists(mp3_file.to_str().ok_or("mp3 file is not a str")?)?;
-    info!("Mutating file: {}", mp3_file_string);
     let mut tag: Tag = Tag::read_from_path(&mp3_file_string).map_err(|e| e.to_string())?;
     tag.set_title(title);
     tag.set_album(album);
     tag.write_to_path(&mp3_file_string, tag.version())
         .map_err(|e| e.to_string())?;
     info!(
-        "Mutating file: {} with title: [{}] and album: [{}]",
+        "Mutated file: [{}] with title: [{}] and album: [{}]",
         &mp3_file_string, title, album
     );
     Ok(())
@@ -59,7 +59,8 @@ fn run(mp3_directory: String) -> Result<(), String> {
     let mp3_file_list = glob(&file_pattern).map_err(|e| e.to_string())?;
     for mp3_file in mp3_file_list {
         let file_path: PathBuf = mp3_file.map_err(|e| e.to_string())?;
-        let filename: &str = file_path
+        let full_file_path =  canonicalize(file_path).map_err(|e| e.to_string())?;
+        let filename: &str = full_file_path
             .file_name()
             .ok_or("file does not have basename")?
             .to_str()
@@ -68,7 +69,7 @@ fn run(mp3_directory: String) -> Result<(), String> {
             .strip_suffix(".mp3")
             .ok_or("does the file ends with .mp3?")?;
         let album: Vec<&str> = filename.split('-').collect();
-        mutate_mp3_file_metadata(&file_path, title, album[0])?;
+        mutate_mp3_file_metadata(&full_file_path, title, album[0])?;
     }
     Ok(())
 }

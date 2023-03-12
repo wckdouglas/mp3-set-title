@@ -1,5 +1,7 @@
 [package]
 name = "mp3-set-title"
+author = "DCW <wckdouglas@gmail.com>"
+about = "Set title of mp3 files in a given directory using their file names"
 version = "0.1.0"
 edition = "2021"
 

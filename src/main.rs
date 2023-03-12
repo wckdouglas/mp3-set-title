@@ -8,7 +8,9 @@ use std::fs::canonicalize;
 /// Set title of mp3 files in a given directory using their file names,
 /// this assumes the file is named as {album}-{song_title}.mp3
 #[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
+#[command(author = "DCW <wckdouglas@gmail.com>")]
+#[command(version, about)]
+#[command(long_about = "This is a simple program to set titles of mp3 files using their filenames.")]
 struct Args {
     /// Directory containing all mp3 files
     #[arg(short, long, value_parser=check_folder_exists)]

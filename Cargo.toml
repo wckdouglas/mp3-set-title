@@ -1,9 +1,10 @@
 [package]
 name = "mp3-set-title"
 author = "DCW <wckdouglas@gmail.com>"
-about = "Set title of mp3 files in a given directory using their file names"
+description = "Set title of mp3 files in a given directory using their file names"
 version = "0.1.0"
 edition = "2021"
+license = "Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "mp3"
 version = "0.1.0"
-description = "Manipulate mp3 metadata"
+description = "Manipulate mp3 metadata to sync file name to song name"
 authors = ["Douglas Wu <wckdouglas@gmail.com>"]
-license = "MIT"
+license = "Apache-2.0"
 readme = "README.md"
 
 [tool.poetry.dependencies]

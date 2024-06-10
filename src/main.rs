@@ -1,7 +1,7 @@
 use clap::Parser;
 use glob::glob;
 use id3::{Tag, TagLike};
-use log::info;
+use log::{debug, info};
 use std::path::{Path, PathBuf};
 use std::fs::canonicalize;
 
@@ -39,6 +39,7 @@ fn check_folder_exists(file_path: &str) -> Result<String, String> {
 /// - album: the album to be set for the song
 fn mutate_mp3_file_metadata(mp3_file: &Path, title: &str, album: &str) -> Result<(), String> {
     let mp3_file_string = check_folder_exists(mp3_file.to_str().ok_or("mp3 file is not a str")?)?;
+    debug!("Reading {}...", &mp3_file_string);
     let mut tag: Tag = Tag::read_from_path(&mp3_file_string).map_err(|e| e.to_string())?;
     tag.set_title(title);
     tag.set_album(album);

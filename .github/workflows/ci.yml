@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: dtolnay/rust-toolchain@stable
       
       - name: Get utils
@@ -39,6 +41,16 @@ jobs:
       - name: CI -- format
         run: |
           cargo fmt
+
+      - name: Get next version
+        id: get_next_version
+        uses: thenativeweb/get-next-version@main
+        with:
+          prefix: '' # 
+      
+      - name: Show version
+        run: |
+          echo Will release to ${{ steps.get_next_version.outputs.version }}
 
   publish:
     needs: build-and-test-rust

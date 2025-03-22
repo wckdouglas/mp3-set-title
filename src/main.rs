@@ -2,15 +2,17 @@ use clap::Parser;
 use glob::glob;
 use id3::{Tag, TagLike};
 use log::{debug, info};
-use std::path::{Path, PathBuf};
 use std::fs::canonicalize;
+use std::path::{Path, PathBuf};
 
 /// Set title of mp3 files in a given directory using their file names,
 /// this assumes the file is named as {album}-{song_title}.mp3
 #[derive(Parser, Debug)]
 #[command(author = "DCW <wckdouglas@gmail.com>")]
 #[command(version, about)]
-#[command(long_about = "This is a simple program to set titles of mp3 files using their filenames.")]
+#[command(
+    long_about = "This is a simple program to set titles of mp3 files using their filenames."
+)]
 struct Args {
     /// Directory containing all mp3 files
     #[arg(short, long, value_parser=check_folder_exists)]
@@ -62,7 +64,7 @@ fn run(mp3_directory: String) -> Result<(), String> {
     let mp3_file_list = glob(&file_pattern).map_err(|e| e.to_string())?;
     for mp3_file in mp3_file_list {
         let file_path: PathBuf = mp3_file.map_err(|e| e.to_string())?;
-        let full_file_path =  canonicalize(file_path).map_err(|e| e.to_string())?;
+        let full_file_path = canonicalize(file_path).map_err(|e| e.to_string())?;
         let filename: &str = full_file_path
             .file_name()
             .ok_or("file does not have basename")?

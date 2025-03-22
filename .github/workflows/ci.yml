@@ -65,7 +65,9 @@ jobs:
 
       - name: Run release
         run:
-          CARGO_PKG_VERSION=${{ steps.get_next_version.outputs.version }} cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          CARGO_PKG_VERSION=${{ steps.get_next_version.outputs.version }} 
+          sed 's/version = "0.0.0"/version = \"'"$CARGO_PKG_VERSION"'\"/' -i Cargo.toml
+          cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
       - name: push tag
         run: |

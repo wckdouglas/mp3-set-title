@@ -2,9 +2,9 @@
 name = "mp3-set-title"
 author = "DCW <wckdouglas@gmail.com>"
 description = "Set title of mp3 files in a given directory using their file names"
-version = "0.0.0"
 edition = "2021"
 license = "Apache-2.0"
+version = "0.0.0"                                                                  # dynamic
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

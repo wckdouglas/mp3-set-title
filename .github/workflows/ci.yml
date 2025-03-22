@@ -40,6 +40,16 @@ jobs:
         run: |
           cargo fmt
 
+      - name: Get next version
+        id: get_next_version
+        uses: thenativeweb/get-next-version@main
+        with:
+          prefix: '' # 
+      
+      - name: Show version
+        run: |
+          echo Will release to ${{ steps.get_next_version.outputs.version }}
+
   publish:
     needs: build-and-test-rust
     runs-on: ubuntu-latest

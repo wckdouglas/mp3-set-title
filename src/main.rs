@@ -76,6 +76,7 @@ fn run(mp3_directory: String) -> Result<(), String> {
         let album: Vec<&str> = filename.split('-').collect();
         mutate_mp3_file_metadata(&full_file_path, title, album[0])?;
     }
+
     Ok(())
 }
 

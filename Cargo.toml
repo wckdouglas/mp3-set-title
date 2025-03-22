@@ -2,7 +2,7 @@
 name = "mp3-set-title"
 author = "DCW <wckdouglas@gmail.com>"
 description = "Set title of mp3 files in a given directory using their file names"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 license = "Apache-2.0"
 
